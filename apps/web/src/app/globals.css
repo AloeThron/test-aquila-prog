@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply box-border;
+  }
+
+  font-semibold {
+    font-weight: 450;
+  }
+}
+
+@font-face {
+  font-family: Neue Montreal;
+  src: url(./assets/fonts/NeueMontreal-Regular.otf);
+}
+
+html {
+  font-family: Neue Montreal;
+  font-weight: 500;
+}
+
+.project-card:hover .item {
+  opacity: 100;
+  transition: opacity 0.5s ease-in-out;
+}
+.overlay {
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(12px);
+  transition: all 0.3s cubic-bezier(0.2, 0.65, 0.3, 0.9);
+}

@@ -1,19 +1,32 @@
 {
   "name": "@repo/ui",
   "version": "0.0.0",
+  "sideEffects": [
+    "**/*.css"
+  ],
   "exports": {
-    "./button": "./src/button.tsx"
+    "./styles.css": "./dist/index.css",
+    "./button": "./src/button.tsx",
+    "./navbar": "./src/navbar.tsx"
   },
   "scripts": {
-    "lint": "eslint \"**/*.ts*\" --max-warnings 0"
+    "lint": "eslint \"**/*.ts*\" --max-warnings 0",
+    "build": "tailwindcss -i ./src/styles.css -o dist/index.css",
+    "dev": "tailwindcss -i ./src/styles.css -o ./dist/index.css --watch",
+    "type-check": "tsc --noEmit"
   },
   "devDependencies": {
+    "@repo/eslint-config": "workspace:*",
+    "@repo/tailwind-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
     "@types/react": "^18.2.46",
     "@types/react-dom": "^18.2.18",
+    "autoprefixer": "^10.4.17",
     "eslint": "^8.56.0",
-    "@repo/eslint-config": "workspace:*",
+    "postcss": "^8.4.33",
     "react": "^18.2.0",
-    "@repo/typescript-config": "workspace:*",
+    "tailwindcss": "^3.4.1",
+    "tsup": "^8.0.1",
     "typescript": "^5.3.3"
   }
 }
