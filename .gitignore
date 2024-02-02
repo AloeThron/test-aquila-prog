@@ -34,8 +34,3 @@ yarn-error.log*
 
 # turbo
 .turbo
-
-
-# ssh
-key
-key.pub
