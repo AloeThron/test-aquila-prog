@@ -28,7 +28,6 @@
     "*.{md,mdx,mjs,yml,yaml,css}": [
       "prettier --write"
     ],
-    "src/**/*.{js,ts,tsx}": "prettier --write",
     "src/**/*.js": "eslint"
   }
 }
