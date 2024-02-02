@@ -24,10 +24,10 @@
     "npm": ">=7.0.0"
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx}": "prettier --write",
+    "*.{js,ts,tsx}": "prettier --write",
     "*.{md,mdx,mjs,yml,yaml,css}": [
       "prettier --write"
     ],
-    "src/**/*.js": "eslint"
+    "src/**/*.{js,ts,tsx}": "eslint"
   }
 }
