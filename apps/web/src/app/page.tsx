@@ -5,7 +5,9 @@ import Contact from "./contact/page";
 
 export default function Web() {
 
-  
+
+
+
   return (
     <div className="container mx-auto">
       <div className="relative flex flex-col">
