@@ -12,7 +12,7 @@
     "prepare": "husky install",
     "db:migrate:deploy": "turbo run db:migrate:deploy",
     "db:push": "turbo run db:push",
-    "db:seed": "turbo run db:seed"
+    "generate": "prisma generate"
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
@@ -20,6 +20,7 @@
     "lint-staged": "^15.2.1",
     "prettier": "^3.1.1",
     "prettier-plugin-tailwindcss": "^0.5.11",
+    "prisma": "^5.9.1",
     "turbo": "latest"
   },
   "workspaces": [
@@ -27,7 +28,7 @@
     "packages/*"
   ],
   "prisma": {
-    "schema": "packages/database/prisma/schema.prisma"
+    "schema": "apps/api/prisma/schema.prisma"
   },
   "packageManager": "pnpm@8.15.1",
   "engines": {
