@@ -44,10 +44,10 @@ importers:
       morgan:
         specifier: ^1.10.0
         version: 1.10.0
+      prisma:
+        specifier: ^5.9.1
+        version: 5.9.1
     devDependencies:
-      '@repo/database':
-        specifier: '*'
-        version: link:../../packages/database
       '@repo/eslint-config':
         specifier: workspace:*
         version: link:../../packages/eslint-config
@@ -93,9 +93,6 @@ importers:
       nodemon:
         specifier: ^3.0.2
         version: 3.0.3
-      prisma:
-        specifier: ^5.9.1
-        version: 5.9.1
       supertest:
         specifier: ^6.3.3
         version: 6.3.4
@@ -160,40 +157,6 @@ importers:
       tailwindcss:
         specifier: ^3.4.1
         version: 3.4.1
-      typescript:
-        specifier: ^5.3.3
-        version: 5.3.3
-
-  packages/database:
-    dependencies:
-      '@prisma/client':
-        specifier: ^5.7.1
-        version: 5.9.1(prisma@5.9.1)
-      cors:
-        specifier: ^2.8.5
-        version: 2.8.5
-    devDependencies:
-      '@repo/eslint-config':
-        specifier: '*'
-        version: link:../eslint-config
-      '@repo/typescript-config':
-        specifier: '*'
-        version: link:../typescript-config
-      eslint:
-        specifier: ^8.56.0
-        version: 8.56.0
-      prisma:
-        specifier: ^5.9.1
-        version: 5.9.1
-      rimraf:
-        specifier: ^5.0.5
-        version: 5.0.5
-      tsup:
-        specifier: ^8.0.1
-        version: 8.0.1(postcss@8.4.33)(typescript@5.3.3)
-      tsx:
-        specifier: ^4.7.0
-        version: 4.7.0
       typescript:
         specifier: ^5.3.3
         version: 5.3.3
@@ -1291,9 +1254,11 @@ packages:
 
   /@prisma/debug@5.9.1:
     resolution: {integrity: sha512-yAHFSFCg8KVoL0oRUno3m60GAjsUKYUDkQ+9BA2X2JfVR3kRVSJFc/GpQ2fSORi4pSHZR9orfM4UC9OVXIFFTA==}
+    dev: false
 
   /@prisma/engines-version@5.9.0-32.23fdc5965b1e05fc54e5f26ed3de66776b93de64:
     resolution: {integrity: sha512-HFl7275yF0FWbdcNvcSRbbu9JCBSLMcurYwvWc8WGDnpu7APxQo2ONtZrUggU3WxLxUJ2uBX+0GOFIcJeVeOOQ==}
+    dev: false
 
   /@prisma/engines@5.9.1:
     resolution: {integrity: sha512-gkdXmjxQ5jktxWNdDA5aZZ6R8rH74JkoKq6LD5mACSvxd2vbqWeWIOV0Py5wFC8vofOYShbt6XUeCIUmrOzOnQ==}
@@ -1303,6 +1268,7 @@ packages:
       '@prisma/engines-version': 5.9.0-32.23fdc5965b1e05fc54e5f26ed3de66776b93de64
       '@prisma/fetch-engine': 5.9.1
       '@prisma/get-platform': 5.9.1
+    dev: false
 
   /@prisma/fetch-engine@5.9.1:
     resolution: {integrity: sha512-l0goQOMcNVOJs1kAcwqpKq3ylvkD9F04Ioe1oJoCqmz05mw22bNAKKGWuDd3zTUoUZr97va0c/UfLNru+PDmNA==}
@@ -1310,11 +1276,13 @@ packages:
       '@prisma/debug': 5.9.1
       '@prisma/engines-version': 5.9.0-32.23fdc5965b1e05fc54e5f26ed3de66776b93de64
       '@prisma/get-platform': 5.9.1
+    dev: false
 
   /@prisma/get-platform@5.9.1:
     resolution: {integrity: sha512-6OQsNxTyhvG+T2Ksr8FPFpuPeL4r9u0JF0OZHUBI/Uy9SS43sPyAIutt4ZEAyqWQt104ERh70EZedkHZKsnNbg==}
     dependencies:
       '@prisma/debug': 5.9.1
+    dev: false
 
   /@rollup/rollup-android-arm-eabi@4.9.6:
     resolution: {integrity: sha512-MVNXSSYN6QXOulbHpLMKYi60ppyO13W9my1qogeiAqtjb2yR4LSmfU2+POvDkLzhjYLXz9Rf9+9a3zFHW1Lecg==}
@@ -5378,6 +5346,7 @@ packages:
     requiresBuild: true
     dependencies:
       '@prisma/engines': 5.9.1
+    dev: false
 
   /prompts@2.4.2:
     resolution: {integrity: sha512-NxNv/kLguCA7p3jE8oL2aEBsrJWgAakBpgmgK6lpPWV+WuOmY6r2/zbAVnP+T8bQlA0nzHXSJSJW0Hq7ylaD2Q==}
@@ -5631,14 +5600,6 @@ packages:
     hasBin: true
     dependencies:
       glob: 7.2.3
-    dev: true
-
-  /rimraf@5.0.5:
-    resolution: {integrity: sha512-CqDakW+hMe/Bz202FPEymy68P+G50RfMQK+Qo5YUqc9SPipvbGjCGKd0RSKEelbsfQuw3g5NZDSrlZZAJurH1A==}
-    engines: {node: '>=14'}
-    hasBin: true
-    dependencies:
-      glob: 10.3.10
     dev: true
 
   /rollup@4.9.6:
@@ -6333,17 +6294,6 @@ packages:
     dependencies:
       tslib: 1.14.1
       typescript: 5.3.3
-    dev: true
-
-  /tsx@4.7.0:
-    resolution: {integrity: sha512-I+t79RYPlEYlHn9a+KzwrvEwhJg35h/1zHsLC2JXvhC2mdynMv6Zxzvhv5EMV6VF5qJlLlkSnMVvdZV3PSIGcg==}
-    engines: {node: '>=18.0.0'}
-    hasBin: true
-    dependencies:
-      esbuild: 0.19.12
-      get-tsconfig: 4.7.2
-    optionalDependencies:
-      fsevents: 2.3.3
     dev: true
 
   /turbo-darwin-64@1.12.2:
