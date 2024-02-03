@@ -13,7 +13,7 @@ RUN apk update
 WORKDIR /app
 COPY . .
 RUN pnpm install turbo@latest --global
-RUN turbo prune web --docker
+RUN turbo prune api --docker
 
 CMD turbo --version
 
@@ -30,7 +30,7 @@ RUN pnpm install
 
 # Build the project
 COPY --from=builder /app/out/full/ .
-RUN pnpm turbo run build --filter=web...
+RUN pnpm turbo run build --filter=api...
 
 FROM base AS runner
 WORKDIR /app
@@ -40,14 +40,14 @@ RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 USER nextjs
 
-COPY --from=installer /app/apps/web/next.config.js .
-COPY --from=installer /app/apps/web/package.json .
+COPY --from=installer /app/apps/api/next.config.js .
+COPY --from=installer /app/apps/api/package.json .
 
 # Automatically leverage output traces to reduce image size
-COPY --from=installer --chown=nextjs:nodejs /app/apps/web/.next/standalone ./
-COPY --from=installer --chown=nextjs:nodejs /app/apps/web/.next/static ./apps/web/.next/static
-COPY --from=installer --chown=nextjs:nodejs /app/apps/web/public ./apps/web/public
+COPY --from=installer --chown=nextjs:nodejs /app/apps/api/.next/standalone ./
+COPY --from=installer --chown=nextjs:nodejs /app/apps/api/.next/static ./apps/api/.next/static
+COPY --from=installer --chown=nextjs:nodejs /app/apps/api/public ./apps/api/public
 
 EXPOSE 3200
 
-CMD node apps/web/server.js
+CMD node apps/api/server.js
