@@ -16,7 +16,7 @@
     "generate": "prisma generate"
   },
   "prisma": {
-    "schema": "api/prisma/schema.prisma"
+    "schema": "./prisma/schema.prisma"
   },
   "jest": {
     "preset": "@repo/jest-presets/jest/node"

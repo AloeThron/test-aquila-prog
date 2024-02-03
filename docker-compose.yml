@@ -21,11 +21,9 @@ services:
       - 3200:3200
     environment:
       - DATABASE_URL=${DATABASE_URL}
-    command:
-      - docker exec api /bin/sh
-      - npx prisma generate
     depends_on:
       - prisma
+    command: npx prisma generate
     networks:
       - app_network
   prisma:
