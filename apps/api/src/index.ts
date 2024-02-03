@@ -2,7 +2,7 @@ import express, { Request, Response } from "express";
 import cors from "cors";
 
 import solve24 from "./game24";
-import { db } from "@repo/database";
+import { db } from "./client";
 
 const app = express();
 app.use(express.json());

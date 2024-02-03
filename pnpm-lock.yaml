@@ -29,9 +29,9 @@ importers:
 
   apps/api:
     dependencies:
-      '@repo/logger':
-        specifier: workspace:*
-        version: link:../../packages/logger
+      '@prisma/client':
+        specifier: ^5.7.1
+        version: 5.9.1(prisma@5.9.1)
       body-parser:
         specifier: ^1.20.2
         version: 1.20.2
@@ -93,6 +93,9 @@ importers:
       nodemon:
         specifier: ^3.0.2
         version: 3.0.3
+      prisma:
+        specifier: ^5.9.1
+        version: 5.9.1
       supertest:
         specifier: ^6.3.3
         version: 6.3.4
@@ -224,30 +227,6 @@ importers:
       ts-jest:
         specifier: ^29.1.1
         version: 29.1.2(@babel/core@7.23.9)(jest@29.7.0)(typescript@5.3.3)
-
-  packages/logger:
-    devDependencies:
-      '@repo/eslint-config':
-        specifier: workspace:*
-        version: link:../eslint-config
-      '@repo/jest-presets':
-        specifier: workspace:*
-        version: link:../jest-presets
-      '@repo/typescript-config':
-        specifier: workspace:*
-        version: link:../typescript-config
-      '@types/jest':
-        specifier: ^29.5.11
-        version: 29.5.12
-      eslint:
-        specifier: ^8.56.0
-        version: 8.56.0
-      jest:
-        specifier: ^29.7.0
-        version: 29.7.0(@types/node@20.11.16)
-      typescript:
-        specifier: ^5.3.3
-        version: 5.3.3
 
   packages/tailwind-config:
     devDependencies:
