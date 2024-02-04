@@ -3,8 +3,6 @@ import cors from "cors";
 
 import mysql from "mysql2/promise";
 import { Sequelize, DataTypes } from "sequelize";
-import https from "https";
-import fs from "fs";
 
 import solve24 from "./game24";
 
@@ -89,15 +87,7 @@ app.get("/chest24", async (req: Request, res: Response) => {
   }
 });
 
-const httpsServer = https.createServer(
-  {
-    key: fs.readFileSync("path/to/privatekey.pem"),
-    cert: fs.readFileSync("path/to/certificate.pem"),
-  },
-  app,
-);
-
-httpsServer.listen(3200, async () => {
+app.listen(3200, async () => {
   await initMySQL();
   await sequelize.sync();
   console.log("Server is running on port 3200");
