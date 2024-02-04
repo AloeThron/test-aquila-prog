@@ -1,7 +1,8 @@
 import express, { Request, Response } from "express";
 import cors from "cors";
 
-import { Sequelize, DataTypes } from "sequelize-cockroachdb";
+import mysql from "mysql2/promise";
+import { Sequelize, DataTypes } from "sequelize";
 
 import solve24 from "./game24";
 
@@ -16,10 +17,22 @@ app.use(
   }),
 );
 
-// const sequelize = new Sequelize(`${process.env.DATABASE}`);
-const sequelize = new Sequelize(
-  "postgresql://aloethron:zLcDrRNuUn4GsRF5bf9LAA@game24-8528.8nk.gcp-asia-southeast1.cockroachlabs.cloud:26257/defaultdb?sslmode=verify-full",
-);
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+let conn: mysql.Connection | null = null;
+
+const initMySQL = async () => {
+  conn = await mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "root",
+    database: "tutorial",
+  });
+};
+
+const sequelize = new Sequelize("tutorial", "root", "root", {
+  host: "localhost",
+  dialect: "mysql",
+});
 
 const Game24 = sequelize.define(
   "game24",
@@ -56,11 +69,11 @@ app.get("/chest24", async (req: Request, res: Response) => {
       } else {
         const solutions = solve24(numbers);
 
+        await Game24.create({ numbers, solutions });
+
         if (solutions.length === 0) {
           res.json({ success: true, message: "It's not imposible." });
         }
-
-        await Game24.create({ numbers, solutions });
 
         res.json(solutions);
       }
@@ -74,7 +87,8 @@ app.get("/chest24", async (req: Request, res: Response) => {
   }
 });
 
-app.listen(3500, async () => {
+app.listen(3200, async () => {
+  await initMySQL();
   await sequelize.sync();
-  console.log("Server is running on port 3500");
+  console.log("Server is running on port 3200");
 });

@@ -9,5 +9,3 @@ services:
     restart: always
     ports:
       - 3100:3000
-    networks:
-      - app_network
