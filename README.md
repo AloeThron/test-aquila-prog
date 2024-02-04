@@ -46,4 +46,3 @@ This Turborepo has some additional tools already setup for you:
 - [TypeScript] for static type checking
 - [ESLint] for code linting
 - [Prettier]for code formatting
-  "# test-aquila-prog"
