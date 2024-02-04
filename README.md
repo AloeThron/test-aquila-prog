@@ -23,7 +23,7 @@ This repo is configured to be built with Docker, and Docker compose. To build da
 docker-compose -f docker-compose.yml up -d
 ```
 
-Open http://localhost:3000 for Front-end project
+Open http://localhost:3100 for Front-end project
 
 Open https://localhost:3500/chest24?number=7456 for Back-end project
 
