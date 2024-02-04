@@ -18,14 +18,13 @@ This turborepo uses [pnpm] as a package manager.
 
 - `@repo/web`: a [Next.js] app
 - `@repo/api`: an [Express] server
-- `@repo/eslint-config-custom`: `eslint` configurations for client side applications (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/eslint-config-custom-server`: `eslint` configurations for server side applications (includes `eslint-config-next` and `eslint-config-prettier`)
 - `@repo/typescript-config`: tsconfig.json's used throughout the monorepo
+- `eslint` configurations for client side applications (includes `eslint-config-next` and `eslint-config-prettier`)
 - `Husky`: Automatically lint your commit messages, code, and run tests upon committing or pushing.
 
 ### Docker
 
-This repo is configured to be built with Docker, and Docker compose. To build all apps in this repo:
+This repo is configured to be built with Docker, and Docker compose. To build database in this repo:
 
 ```
 # Create a network, which allows containers to communicate
