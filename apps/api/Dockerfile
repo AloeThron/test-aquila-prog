@@ -15,10 +15,6 @@ COPY . .
 RUN pnpm install turbo@latest --global
 RUN turbo prune api --docker
 
-# ติดตั้ง Prisma CLI
-RUN pnpm install -g prisma --unsafe-perm=true --allow-root
-
-
 # Add lockfile and package.json's of isolated subworkspace
 FROM base AS installer
 RUN apk add --no-cache libc6-compat
@@ -29,9 +25,6 @@ WORKDIR /app
 COPY .gitignore .gitignore
 COPY --from=builder /app/out/json/ .
 RUN pnpm install
-
-# Run Prisma generate
-CMD prisma generate
 
 # Build the project
 COPY --from=builder /app/out/full/ .
@@ -47,7 +40,6 @@ RUN adduser --system --uid 1001 expressjs
 USER expressjs
 
 COPY --from=installer /app .
-RUN chmod -R 777 /app/node_modules
 
 EXPOSE 3200
 
