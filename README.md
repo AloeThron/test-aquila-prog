@@ -35,7 +35,9 @@ docker network create app_network
 docker-compose -f docker-compose.yml up -d
 ```
 
-Open http://localhost:3000 for Front-End
+Open http://localhost:3000 for Front-end project
+
+Open https://localhost:3200/chest24?number=7456 for Back-end project
 
 To shutdown all running containers:
 
@@ -44,20 +46,12 @@ To shutdown all running containers:
 docker kill $(docker ps -q) && docker rm $(docker ps -a -q)
 ```
 
-### Remote Caching
-
-This example includes optional remote caching. In the Dockerfiles of the apps, uncomment the build arguments for `TURBO_TEAM` and `TURBO_TOKEN`. Then, pass these build arguments to your Docker build.
-
-You can test this behavior using a command like:
-
-`docker build -f apps/web/Dockerfile . --build-arg TURBO_TEAM=“your-team-name” --build-arg TURBO_TOKEN=“your-token“ --no-cache`
-
 ### Utilities
 
 This Turborepo has some additional tools already setup for you:
 
 - [TypeScript](https://www.typescriptlang.org/) for static type checking
 - [ESLint](https://eslint.org/) for code linting
-- [Jest](https://jestjs.io) test runner for all things JavaScript
 - [Prettier](https://prettier.io) for code formatting
+
   "# test-aquila-prog"
