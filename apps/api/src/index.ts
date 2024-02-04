@@ -22,7 +22,7 @@ let conn: mysql.Connection | null = null;
 
 const initMySQL = async () => {
   conn = await mysql.createConnection({
-    host: "mysql_db",
+    host: "localhost",
     user: "root",
     password: "root",
     database: "tutorial",
@@ -30,7 +30,7 @@ const initMySQL = async () => {
 };
 
 const sequelize = new Sequelize("tutorial", "root", "root", {
-  host: "mysql_db",
+  host: "localhost",
   dialect: "mysql",
 });
 
