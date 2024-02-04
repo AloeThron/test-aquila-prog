@@ -50,8 +50,7 @@ docker kill $(docker ps -q) && docker rm $(docker ps -a -q)
 
 This Turborepo has some additional tools already setup for you:
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
+- [TypeScript] for static type checking
+- [ESLint] for code linting
+- [Prettier]for code formatting
   "# test-aquila-prog"
