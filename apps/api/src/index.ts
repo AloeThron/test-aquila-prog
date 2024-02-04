@@ -59,13 +59,13 @@ app.get("/chest24", async (req: Request, res: Response) => {
       numbers.length === 4 &&
       /^\d+$/.test(numbers)
     ) {
-      const existingGame = await Game24.findAndCountAll({
+      const existingGame = await Game24.findOne({
         where: { numbers: numbers },
       });
 
-      console.log(existingGame.count);
-
-      if (existingGame.count === 0) {
+      if (existingGame) {
+        return res.json(existingGame?.dataValues["solutions"]);
+      } else {
         const solutions = solve24(numbers);
 
         await Game24.create({ numbers, solutions });
@@ -75,8 +75,6 @@ app.get("/chest24", async (req: Request, res: Response) => {
         }
 
         res.json(solutions);
-      } else {
-        return res.json(existingGame);
       }
     } else {
       res
