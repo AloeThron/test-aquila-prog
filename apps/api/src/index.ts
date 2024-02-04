@@ -22,6 +22,7 @@ app.get("/chest24", async (req: Request, res: Response) => {
 
     if (
       typeof numbers === "string" &&
+      !numbers.includes("0") &&
       numbers.length === 4 &&
       /^\d+$/.test(numbers)
     ) {
