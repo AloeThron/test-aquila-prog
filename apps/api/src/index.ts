@@ -58,11 +58,11 @@ app.get("/chest24", async (req: Request, res: Response) => {
 
         if (solutions.length === 0) {
           res.json({ success: true, message: "It's not imposible." });
+        } else {
+          await Game24.create({ numbers, solutions });
+
+          res.json(solutions);
         }
-
-        await Game24.create({ numbers, solutions });
-
-        res.json(solutions);
       }
     } else {
       res
