@@ -7,25 +7,21 @@ This is an official Docker starter Turborepo.
 Run the following command:
 
 ```sh
-npx create-turbo@latest -e with-docker
+npx create-turbo@latest
 ```
 
 ## What's inside?
 
-This turborepo uses [Yarn](https://classic.yarnpkg.com/lang/en/) as a package manager. It includes the following packages/apps:
+This turborepo uses [pnpm] as a package manager.
 
 ### Apps and Packages
 
-- `@repo/web`: a [Next.js](https://nextjs.org/) app
-- `@repo/api`: an [Express](https://expressjs.com/) server
-- `@repo/ui`: ui: a React component library
+- `@repo/web`: a [Next.js] app
+- `@repo/api`: an [Express] server
 - `@repo/eslint-config-custom`: `eslint` configurations for client side applications (includes `eslint-config-next` and `eslint-config-prettier`)
 - `@repo/eslint-config-custom-server`: `eslint` configurations for server side applications (includes `eslint-config-next` and `eslint-config-prettier`)
-- `scripts`: Jest configurations
-- `@repo/logger`: Isomorphic logger (a small wrapper around console.log)
 - `@repo/typescript-config`: tsconfig.json's used throughout the monorepo
-
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+- `Husky`: Automatically lint your commit messages, code, and run tests upon committing or pushing.
 
 ### Docker
 
