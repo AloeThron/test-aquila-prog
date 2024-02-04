@@ -1,8 +1,7 @@
 import express, { Request, Response } from "express";
 import cors from "cors";
 
-import { Sequelize, DataTypes } from "sequelize-cockroachdb";
-
+import { sequelize, Game24 } from "./database";
 import solve24 from "./game24";
 
 const app = express();
@@ -14,27 +13,6 @@ app.use(
     allowedHeaders: ["Content-Type"],
     optionsSuccessStatus: 200,
   }),
-);
-
-// const sequelize = new Sequelize(`${process.env.DATABASE}`);
-const sequelize = new Sequelize(
-  "postgresql://aloethron:zLcDrRNuUn4GsRF5bf9LAA@game24-8528.8nk.gcp-asia-southeast1.cockroachlabs.cloud:26257/defaultdb?sslmode=verify-full",
-);
-
-const Game24 = sequelize.define(
-  "game24",
-  {
-    numbers: {
-      type: DataTypes.STRING,
-      unique: true,
-      allowNull: false,
-    },
-    solutions: {
-      type: DataTypes.JSON,
-      allowNull: false,
-    },
-  },
-  {},
 );
 
 app.get("/chest24", async (req: Request, res: Response) => {
