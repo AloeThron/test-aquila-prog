@@ -41,6 +41,6 @@ USER expressjs
 
 COPY --from=installer /app .
 
-EXPOSE 3200
+EXPOSE 3001
 
 CMD node apps/api/dist/index.js

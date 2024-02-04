@@ -3,6 +3,8 @@ import cors from "cors";
 
 import mysql from "mysql2/promise";
 import { Sequelize, DataTypes } from "sequelize";
+import https from "https";
+import fs from "fs";
 
 import solve24 from "./game24";
 
@@ -10,9 +12,10 @@ const app = express();
 app.use(express.json());
 app.use(
   cors({
-    origin: ["*"],
-    methods: ["GET"],
+    origin: ["*", "http://localhost:3200/", "https://localhost:3200/"],
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
     allowedHeaders: ["Content-Type"],
+    optionsSuccessStatus: 200,
   }),
 );
 
@@ -21,7 +24,7 @@ let conn: mysql.Connection | null = null;
 
 const initMySQL = async () => {
   conn = await mysql.createConnection({
-    host: "localhost",
+    host: "mysql_db",
     user: "root",
     password: "root",
     database: "tutorial",
@@ -29,7 +32,7 @@ const initMySQL = async () => {
 };
 
 const sequelize = new Sequelize("tutorial", "root", "root", {
-  host: "localhost",
+  host: "mysql_db",
   dialect: "mysql",
 });
 
@@ -86,7 +89,15 @@ app.get("/chest24", async (req: Request, res: Response) => {
   }
 });
 
-app.listen(3200, async () => {
+const httpsServer = https.createServer(
+  {
+    key: fs.readFileSync("path/to/privatekey.pem"),
+    cert: fs.readFileSync("path/to/certificate.pem"),
+  },
+  app,
+);
+
+httpsServer.listen(3200, async () => {
   await initMySQL();
   await sequelize.sync();
   console.log("Server is running on port 3200");
